@@ -16,5 +16,39 @@ namespace ImageViewer
         {
             InitializeComponent();
         }
+
+        private void showButton_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                imageViewer.Load(openFileDialog1.FileName);
+            }
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            imageViewer.Image = null;
+        }
+
+        private void backgroundButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                imageViewer.BackColor = colorDialog1.Color;
+            }
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void stretchCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (stretchCheckbox.Checked)
+                imageViewer.SizeMode = PictureBoxSizeMode.StretchImage;
+            else
+                imageViewer.SizeMode = PictureBoxSizeMode.Normal;
+        }
     }
 }
